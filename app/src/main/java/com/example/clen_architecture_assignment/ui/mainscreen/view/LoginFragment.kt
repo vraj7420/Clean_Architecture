@@ -35,7 +35,6 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mainViewModel = ViewModelProvider(activity!!)[MainActivityViewModel::class.java]
-
         setBinding()
         setTextChangeListener()
         setObserver()

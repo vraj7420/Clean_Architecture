@@ -45,7 +45,7 @@ class ProfileFragment : Fragment() {
     private fun setViewModel() {
         mainViewModel = ViewModelProvider(activity!!)[MainActivityViewModel::class.java]
         bindingFragmentProfile.viewModel = mainViewModel
-        bindingFragmentProfile.lifecycleOwner = requireActivity()
+        bindingFragmentProfile.lifecycleOwner =requireActivity()
     }
 
     private fun init() {

@@ -2,24 +2,19 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
     <data>
-
         <variable
             name="viewModel"
             type="com.example.clen_architecture_assignment.ui.mainscreen.viewmodel.MainActivityViewModel" />
         <import type="android.view.View" />
         <import type="com.example.clen_architecture_assignment.R" />
-
         <import type="android.text.TextUtils" />
     </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/light_blue_E8EDF5"
         tools:context=".ui.mainscreen.view.LoginFragment">
-
         <androidx.core.widget.ContentLoadingProgressBar
             android:id="@+id/pbWaiting"
             style="@android:style/Widget.ProgressBar.Small"
