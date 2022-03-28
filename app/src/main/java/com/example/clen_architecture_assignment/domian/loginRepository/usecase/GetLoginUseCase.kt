@@ -19,7 +19,7 @@ class GetLoginUseCase@Inject constructor(private val repository:LoginRepository)
                 data.Note,data.NumberOfDaysToReactivate,data.NumberOfSuspendedDays,data.PhoneNumber,data.ProfileImageURL
             ,data.UserAddress_Address,data.UserAddress_City,data.UserAddress_Country,data.UserAddress_ID,data.UserAddress_Latitude,data.UserAddress_Longitude,data.UserAddress_State,data.UserAddress_ZipCode
             ,data.UserID,data.VehicleStandardStatus,data.token_type,data.access_token)
-            emit(Resource.Success(data))
+            emit(Resource.Success(loginEntity))
         } catch (e: HttpException) {
             emit(Resource.Error(message = e.response()?.code().toString()))
         } catch (e: IOException) {

@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.clen_architecture_assignment.Resource
-import com.example.clen_architecture_assignment.data.model.LoginData
+import com.example.clen_architecture_assignment.domian.loginRepository.model.LoginDataEntity
 import com.example.clen_architecture_assignment.domian.loginRepository.usecase.GetLoginUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
@@ -18,7 +18,7 @@ class MainActivityViewModel  @Inject constructor(private val getLoginUseCase: Ge
     var btnLoginClickableLiveData=MutableLiveData(false)
     var loadingLiveData=MutableLiveData(false)
     var errorLiveData=MutableLiveData("")
-    var loginDataLiveData=MutableLiveData<LoginData?>()
+    var loginDataLiveData=MutableLiveData<LoginDataEntity>()
     private val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
 
 
@@ -49,7 +49,7 @@ class MainActivityViewModel  @Inject constructor(private val getLoginUseCase: Ge
 
                 }
                 is Resource.Success->{
-                    loginDataLiveData.postValue(it.data)
+                    loginDataLiveData.postValue(it.data as LoginDataEntity)
                     loadingLiveData.postValue(false)
                 }
             }
