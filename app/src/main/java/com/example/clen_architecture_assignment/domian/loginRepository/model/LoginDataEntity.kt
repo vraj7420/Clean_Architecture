@@ -1,6 +1,6 @@
-package com.example.clen_architecture_assignment.data.model
+package com.example.clen_architecture_assignment.domian.loginRepository.model
 
-data class LoginData(
+data class LoginDataEntity(
     val DeactivationRiskPercentage: Int=0,
     val Email: String="",
     val Name: String="",

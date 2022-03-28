@@ -1,8 +1,8 @@
-package com.example.clen_architecture_assignment.data.repository
+package com.example.clen_architecture_assignment.data.datarepository
 
 import com.example.clen_architecture_assignment.data.model.LoginData
-import com.example.clen_architecture_assignment.di.BaseService
-import com.example.clen_architecture_assignment.domian.mainactivity.repository.LoginRepository
+import com.example.clen_architecture_assignment.data.BaseService
+import com.example.clen_architecture_assignment.domian.loginRepository.repository.LoginRepository
 
 class LoginDataRepository: LoginRepository{
     override suspend fun getLoginUserData(email: String, password: String): LoginData {

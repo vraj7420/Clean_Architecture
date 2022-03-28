@@ -1,8 +1,9 @@
-package com.example.clen_architecture_assignment.domian.mainactivity.usecase
+package com.example.clen_architecture_assignment.domian.loginRepository.usecase
 
 import com.example.clen_architecture_assignment.Resource
 import com.example.clen_architecture_assignment.data.model.LoginData
-import com.example.clen_architecture_assignment.domian.mainactivity.repository.LoginRepository
+import com.example.clen_architecture_assignment.domian.loginRepository.model.LoginDataEntity
+import com.example.clen_architecture_assignment.domian.loginRepository.repository.LoginRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
@@ -14,7 +15,11 @@ class GetLoginUseCase@Inject constructor(private val repository:LoginRepository)
         try {
             emit(Resource.Loading())
             val data = repository.getLoginUserData(email,password)
-            emit(Resource.Success(data = data))
+            val loginEntity=LoginDataEntity(data.DeactivationRiskPercentage,data.Email,data.Name,
+                data.Note,data.NumberOfDaysToReactivate,data.NumberOfSuspendedDays,data.PhoneNumber,data.ProfileImageURL
+            ,data.UserAddress_Address,data.UserAddress_City,data.UserAddress_Country,data.UserAddress_ID,data.UserAddress_Latitude,data.UserAddress_Longitude,data.UserAddress_State,data.UserAddress_ZipCode
+            ,data.UserID,data.VehicleStandardStatus,data.token_type,data.access_token)
+            emit(Resource.Success(data))
         } catch (e: HttpException) {
             emit(Resource.Error(message = e.response()?.code().toString()))
         } catch (e: IOException) {
@@ -24,3 +29,5 @@ class GetLoginUseCase@Inject constructor(private val repository:LoginRepository)
         }
     }
 }
+
+

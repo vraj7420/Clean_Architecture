@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.clen_architecture_assignment.Resource
 import com.example.clen_architecture_assignment.data.model.LoginData
-import com.example.clen_architecture_assignment.domian.mainactivity.usecase.GetLoginUseCase
+import com.example.clen_architecture_assignment.domian.loginRepository.usecase.GetLoginUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -13,29 +13,44 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainActivityViewModel  @Inject constructor(private val getLoginUseCase: GetLoginUseCase)  :ViewModel(){
-    var email=MutableLiveData<String>()
-    var password=MutableLiveData<String>()
-    var btnLoginClickable=MutableLiveData(false)
-    var loading=MutableLiveData(false)
-    var error=MutableLiveData("")
-    var loginData=MutableLiveData<LoginData?>()
+    var emailLiveData=MutableLiveData<String>()
+    var passwordLiveData=MutableLiveData<String>()
+    var btnLoginClickableLiveData=MutableLiveData(false)
+    var loadingLiveData=MutableLiveData(false)
+    var errorLiveData=MutableLiveData("")
+    var loginDataLiveData=MutableLiveData<LoginData?>()
+    private val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
 
 
+    init {
+        emailLiveData.observeForever{
+            btnLoginClickableLiveData.postValue(
+                emailLiveData.value?.trim()
+                    ?.matches(emailPattern.toRegex()) == true && passwordLiveData.value?.length ?:0 >= 6
+            )
+        }
+        passwordLiveData.observeForever {
+            btnLoginClickableLiveData.postValue(
+                emailLiveData.value?.trim()
+                    ?.matches(emailPattern.toRegex()) == true && passwordLiveData.value?.length ?:0 >= 6
+            )
+        }
+    }
 
     fun login(){
-        getLoginUseCase(email.value.toString(), password.value.toString()).onEach {
+        getLoginUseCase(emailLiveData.value.toString(), passwordLiveData.value.toString()).onEach {
             when(it){
                 is Resource.Loading->{
-                        loading.postValue(true)
+                        loadingLiveData.postValue(true)
                 }
                 is Resource.Error->{
-                    error.postValue(it.message)
-                    loading.postValue(false)
+                    errorLiveData.postValue(it.message)
+                    loadingLiveData.postValue(false)
 
                 }
                 is Resource.Success->{
-                    loginData.postValue(it.data)
-                    loading.postValue(false)
+                    loginDataLiveData.postValue(it.data)
+                    loadingLiveData.postValue(false)
                 }
             }
         }.launchIn(viewModelScope)

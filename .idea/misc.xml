@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/vraj educations fille/tatvasoft projects/Clen_Architecture_Assignment/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.199609375" />
         <entry key="..\:/vraj educations fille/tatvasoft projects/Clen_Architecture_Assignment/app/src/main/res/drawable/edit_text_drawable.xml" value="0.26614583333333336" />
         <entry key="..\:/vraj educations fille/tatvasoft projects/Clen_Architecture_Assignment/app/src/main/res/drawable/ic_baseline_cancel_12.xml" value="0.1972972972972973" />
+        <entry key="..\:/vraj educations fille/tatvasoft projects/Clen_Architecture_Assignment/app/src/main/res/drawable/ic_baseline_photo_camera_24.xml" value="0.18263888888888888" />
         <entry key="..\:/vraj educations fille/tatvasoft projects/Clen_Architecture_Assignment/app/src/main/res/drawable/ic_login.xml" value="0.1972972972972973" />
         <entry key="..\:/vraj educations fille/tatvasoft projects/Clen_Architecture_Assignment/app/src/main/res/drawable/round_button_with_gray_color.xml" value="0.199609375" />
         <entry key="..\:/vraj educations fille/tatvasoft projects/Clen_Architecture_Assignment/app/src/main/res/drawable/round_button_with_purple_color.xml" value="0.199609375" />
@@ -13,7 +15,7 @@
         <entry key="..\:/vraj educations fille/tatvasoft projects/Clen_Architecture_Assignment/app/src/main/res/layout/activity_main.xml" value="0.1450980392156863" />
         <entry key="..\:/vraj educations fille/tatvasoft projects/Clen_Architecture_Assignment/app/src/main/res/layout/custom_dailog.xml" value="0.1875" />
         <entry key="..\:/vraj educations fille/tatvasoft projects/Clen_Architecture_Assignment/app/src/main/res/layout/fragment_login.xml" value="0.2" />
-        <entry key="..\:/vraj educations fille/tatvasoft projects/Clen_Architecture_Assignment/app/src/main/res/layout/fragment_profile.xml" value="0.16" />
+        <entry key="..\:/vraj educations fille/tatvasoft projects/Clen_Architecture_Assignment/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
         <entry key="..\:/vraj educations fille/tatvasoft projects/Clen_Architecture_Assignment/app/src/main/res/xml/network_security_config.xml" value="0.1" />
       </map>
     </option>

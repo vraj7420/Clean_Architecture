@@ -8,6 +8,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.clen_architecture_assignment.R
 import com.example.clen_architecture_assignment.databinding.FragmentLoginBinding
@@ -22,6 +23,7 @@ class LoginFragment : Fragment() {
     private lateinit var bindingFragmentLogin: FragmentLoginBinding
     private lateinit var mainViewModel: MainActivityViewModel
     private val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+    private lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,14 +36,17 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mainViewModel = ViewModelProvider(activity!!)[MainActivityViewModel::class.java]
-        setBinding()
-        setTextChangeListener()
+        init()
+        initViewModel()
         setObserver()
     }
 
+   private fun init() {
+        navController = Navigation.findNavController(view ?: View(requireContext()))
+    }
+
     private fun setObserver() {
-        mainViewModel.error.observe(viewLifecycleOwner) {
+        mainViewModel.errorLiveData.observe(viewLifecycleOwner) {
             if (it.toString().isNotEmpty()) {
                 Snackbar.make(
                     requireActivity().findViewById(android.R.id.content),
@@ -50,31 +55,15 @@ class LoginFragment : Fragment() {
                 ).show()
             }
         }
-        mainViewModel.loginData.observe(viewLifecycleOwner) {
-            val navController = Navigation.findNavController(view ?: View(requireContext()))
+        mainViewModel.loginDataLiveData.observe(viewLifecycleOwner) {
             navController.navigate(R.id.action_loginFragment_to_profileFragment)
         }
     }
 
-    private fun setBinding() {
+    private fun initViewModel() {
+        mainViewModel = ViewModelProvider(requireActivity())[MainActivityViewModel::class.java]
         bindingFragmentLogin.viewModel = mainViewModel
-        bindingFragmentLogin.lifecycleOwner = requireActivity()
-    }
-
-    private fun setTextChangeListener() {
-        tetEmail.addTextChangedListener {
-            mainViewModel.btnLoginClickable.postValue(
-                tetEmail.text.toString().trim()
-                    .matches(emailPattern.toRegex()) && tetPassword.text.toString().length >= 6
-            )
-        }
-        tetPassword.addTextChangedListener {
-            mainViewModel.btnLoginClickable.postValue(
-                tetEmail.text.toString().trim()
-                    .matches(emailPattern.toRegex()) && tetPassword.text.toString().length >= 6
-            )
-        }
-
+        bindingFragmentLogin.lifecycleOwner = viewLifecycleOwner
     }
 
 }

@@ -1,6 +1,5 @@
-package com.example.clen_architecture_assignment.domian.mainactivity.repository
+package com.example.clen_architecture_assignment.domian.loginRepository.repository
 
-import android.provider.ContactsContract
 import com.example.clen_architecture_assignment.data.model.LoginData
 
 interface LoginRepository {

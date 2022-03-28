@@ -1,4 +1,4 @@
-package com.example.clen_architecture_assignment.di
+package com.example.clen_architecture_assignment.data
 
 import com.example.clen_architecture_assignment.BuildConfig
 import com.example.clen_architecture_assignment.data.remote.LoginApiCall
