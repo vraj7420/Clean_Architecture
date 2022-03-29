@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.clen_architecture_assignment.ui.mainscreen.view.LoginFragment"
+        android:name="com.example.cleanArchitectureAssignment.ui.mainscreen.view.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/login_fragment" >
         <action
             android:id="@+id/action_loginFragment_to_profileFragment"
             app:destination="@id/profileFragment"
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.clen_architecture_assignment.ui.mainscreen.view.ProfileFragment"
+        android:name="com.example.cleanArchitectureAssignment.ui.mainscreen.view.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/profile_fragment" />
 </navigation>

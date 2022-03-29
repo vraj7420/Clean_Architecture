@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.clen_architecture_assignment">
+    package="com.example.cleanArchitectureAssignment">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -9,7 +9,7 @@
 
     <application
         android:networkSecurityConfig="@xml/network_security_config"
-        android:name=".BaseApplication"
+        android:name="com.example.cleanArchitectureAssignment.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -18,7 +18,7 @@
         android:theme="@style/Theme.Clen_Architecture_Assignment"
         tools:ignore="UnusedAttribute">
         <activity
-            android:name=".ui.mainscreen.view.MainActivity"
+            android:name="com.example.cleanArchitectureAssignment.ui.mainscreen.view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
