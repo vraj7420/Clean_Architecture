@@ -5,9 +5,9 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.clen_architecture_assignment.ui.mainscreen.viewmodel.MainActivityViewModel" />
+            type="com.example.cleanArchitectureAssignment.ui.mainscreen.viewmodel.MainActivityViewModel" />
         <import type="android.view.View" />
-        <import type="com.example.clen_architecture_assignment.R" />
+        <import type="com.example.cleanArchitectureAssignment.R" />
         <import type="android.text.TextUtils" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,12 +19,12 @@
             android:id="@+id/pbWaiting"
             style="@android:style/Widget.ProgressBar"
             android:layout_width="match_parent"
+            android:elevation="30dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:indeterminate="true"
             android:max="100"
-            android:forceHasOverlappingRendering="true"
             android:indeterminateOnly="true"
             android:visibility="@{viewModel.loadingLiveData ? View.VISIBLE: View.GONE}"
             android:progress="0"

@@ -2,6 +2,7 @@ package com.example.cleanArchitectureAssignment.domain.loginRepository.repositor
 
 import com.example.cleanArchitectureAssignment.data.model.LoginData
 
+
 interface LoginRepository {
-    suspend fun getLoginUserData(email:String,password:String):LoginData
+    suspend fun getLoginUserData(email:String,password:String): LoginData
 }
