@@ -1,4 +1,4 @@
-package com.example.cleanArchitectureAssignment.data.baseService
+package com.example.cleanArchitectureAssignment.data.base
 
 import com.example.cleanArchitectureAssignment.BuildConfig
 import com.example.cleanArchitectureAssignment.data.remote.LoginApiCall
@@ -13,9 +13,10 @@ import java.util.concurrent.TimeUnit
 class BaseService {
     private var retrofitBaseApi: Retrofit? = null
 
-    fun getBaseApi(): LoginApiCall{
+    fun getBaseApi(): LoginApiCall {
         return createRetrofitBase().create(LoginApiCall::class.java)
     }
+
     private fun createRetrofitBase(): Retrofit {
         if (retrofitBaseApi == null) {
             retrofitBaseApi = Retrofit.Builder()

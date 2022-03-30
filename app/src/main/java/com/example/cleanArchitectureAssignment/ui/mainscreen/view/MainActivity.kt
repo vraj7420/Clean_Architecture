@@ -1,7 +1,7 @@
 package com.example.cleanArchitectureAssignment.ui.mainscreen.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.cleanArchitectureAssignment.R
 import dagger.hilt.android.AndroidEntryPoint
 

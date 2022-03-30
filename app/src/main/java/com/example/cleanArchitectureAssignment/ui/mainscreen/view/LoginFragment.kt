@@ -1,6 +1,5 @@
 package com.example.cleanArchitectureAssignment.ui.mainscreen.view
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
-    private lateinit var bindingFragmentLogin:LoginFragmentBinding
+    private lateinit var bindingFragmentLogin: LoginFragmentBinding
     private lateinit var mainViewModel: MainActivityViewModel
     private lateinit var navController: NavController
     private lateinit var actionBar: ActionBar
@@ -29,7 +28,8 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        bindingFragmentLogin = DataBindingUtil.inflate(inflater,R.layout.login_fragment, container, false)
+        bindingFragmentLogin =
+            DataBindingUtil.inflate(inflater, R.layout.login_fragment, container, false)
         return bindingFragmentLogin.root
     }
 
@@ -40,13 +40,12 @@ class LoginFragment : Fragment() {
         initObserver()
     }
 
-   private fun init() {
-       actionBar = (activity as AppCompatActivity?)?.supportActionBar as ActionBar
-       actionBar.title=""
+    private fun init() {
+        actionBar = (activity as AppCompatActivity?)?.supportActionBar as ActionBar
+        actionBar.title = ""
         navController = Navigation.findNavController(view ?: View(requireContext()))
     }
 
-    @SuppressLint("ResourceAsColor")
     private fun initObserver() {
         mainViewModel.errorLiveData.observe(viewLifecycleOwner) {
             if (it.toString().isNotEmpty()) {
@@ -54,7 +53,7 @@ class LoginFragment : Fragment() {
                     requireActivity().findViewById(android.R.id.content),
                     it.toString(),
                     Snackbar.LENGTH_LONG
-                ).setActionTextColor(resources.getColor(R.color.black)).show()
+                ).show()
             }
         }
         mainViewModel.loginDataLiveData.observe(viewLifecycleOwner) {

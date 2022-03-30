@@ -12,11 +12,13 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 object HiltModules {
     @Provides
-    fun  provideLoginRepository():LoginRepository{
+    fun provideLoginRepository(): LoginRepository {
         return LoginDataRepository()
     }
+
     @Provides
-    fun getLoginUseCase():GetLoginUseCase{
+    fun getLoginUse(): GetLoginUseCase {
         return GetLoginUseCase(provideLoginRepository())
     }
+
 }

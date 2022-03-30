@@ -28,4 +28,5 @@
     <string name="token_type">Token Type</string>
     <string name="percentage">%</string>
     <string name="sendMail">Send Mail</string>
+    <string name="no_internet">Check Your Internet</string>
 </resources>

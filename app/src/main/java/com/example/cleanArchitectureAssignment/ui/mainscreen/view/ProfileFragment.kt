@@ -39,37 +39,42 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setViewModel()
+        initViewModel()
         init()
         setListener()
     }
 
-
-    private fun setViewModel() {
+    private fun initViewModel() {
         mainViewModel = ViewModelProvider(requireActivity())[MainActivityViewModel::class.java]
         bindingFragmentProfile.viewModel = mainViewModel
-        bindingFragmentProfile.lifecycleOwner =viewLifecycleOwner
+        bindingFragmentProfile.lifecycleOwner = viewLifecycleOwner
     }
 
     private fun init() {
         actionBar = (activity as AppCompatActivity?)?.supportActionBar as ActionBar
-        actionBar.title=getString(R.string.profile)
-        Utils().imgLoadUsingUrl(requireContext(),mainViewModel.loginDataLiveData.value?.ProfileImageURL.toString(),imgProfile)
+        actionBar.title = getString(R.string.profile)
+        actionBar.setDisplayShowTitleEnabled(true)
+        Utils().imgLoadUsingUrl(
+            requireContext(),
+            mainViewModel.loginDataLiveData.value?.ProfileImageURL.toString(),
+            imgProfile
+        )
     }
 
     private fun setListener() {
-        tvEmail.setOnClickListener {
+        groupUserEmail.setOnClickListener {
             val intent = Intent(Intent.ACTION_SENDTO)
             intent.data = Uri.parse("mailto:${mainViewModel.loginDataLiveData.value?.Email}")
-            startActivity(Intent.createChooser(intent,getString(R.string.sendMail)))
+            startActivity(Intent.createChooser(intent, getString(R.string.sendMail)))
         }
-        tvPhoneNumber.setOnClickListener {
+        groupPhoneNumber.setOnClickListener {
             val callIntent = Intent(Intent.ACTION_DIAL)
             callIntent.data = Uri.parse("tel:${mainViewModel.loginDataLiveData.value?.PhoneNumber}")
             startActivity(callIntent)
         }
-        tvUserAddressZipcode.setOnClickListener {
-            val geoUri = Utils.googleMapUrl+(mainViewModel.loginDataLiveData.value?.UserAddress_Latitude) + "," + (mainViewModel.loginDataLiveData.value?.UserAddress_Longitude)
+        groupUserAddressZip.setOnClickListener {
+            val geoUri =
+                Utils.googleMapUrl + (mainViewModel.loginDataLiveData.value?.UserAddress_Latitude) + "," + (mainViewModel.loginDataLiveData.value?.UserAddress_Longitude)
             val mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse(geoUri))
             startActivity(mapIntent)
         }
@@ -80,7 +85,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun openDialogBoxForEditMessage() {
-        dialog = Dialog(requireContext(),android.R.style.ThemeOverlay_Material_Dialog_Alert)
+        dialog = Dialog(requireContext(), android.R.style.ThemeOverlay_Material_Dialog_Alert)
         dialog.setContentView(R.layout.custom_dailog)
         val btnCancel = dialog.btnCancel
         btnCancel.setOnClickListener {

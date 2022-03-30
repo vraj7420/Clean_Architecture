@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Clen_Architecture_Assignment" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.Clen_Architecture_Assignment" parent="Theme.MaterialComponents.DayNight">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/gray_808080</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -11,7 +11,9 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
-        <item name="actionBarTheme">@style/MyActionBar</item>
+        <item name="actionBarStyle">@style/MyActionBar</item>
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="snackbarStyle">@style/MySnackBarStyle</item>
         <!-- Customize your theme here. -->
     </style>
     <style name="EditTextStyleWhite" parent="android:style/Widget.EditText">
@@ -20,19 +22,21 @@
     </style>
     <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
         <item name="android:background">@color/white</item>
-        <item name="titleTextColor">@color/black</item>
+        <item name="titleTextStyle">@style/TitleWithBlackColor</item>
     </style>
     <style name="MySeekBarTheme" parent="Widget.AppCompat.SeekBar" >
         <item name="colorAccent">@color/blue_327EC1</item>
+    </style>
+    <style name="TitleWithBlackColor">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20sp</item>
     </style>
     <style name="roundedCorners" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">10dp</item>
     </style>
-    <!-- snackbar style in res/values -->
     <style name="MySnackBarStyle" parent="Widget.MaterialComponents.Snackbar">
         <item name="android:background">@color/black</item>
-        <item name="android:textColor">@color/white</item>
     </style>
 
 </resources>

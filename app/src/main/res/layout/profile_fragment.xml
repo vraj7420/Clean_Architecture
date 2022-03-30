@@ -90,6 +90,17 @@
                                     app:layout_constraintStart_toStartOf="@+id/tvUserId"
                                     app:layout_constraintTop_toBottomOf="@id/tvUserId" />
 
+                                <androidx.constraintlayout.widget.Group
+                                    android:id="@+id/groupUserAddressZip"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:visibility="visible"
+                                    app:constraint_referenced_ids="tvUserAddressZipcode,tvUserAddZipCodeTitle"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="@id/tvUserAddZipCodeTitle"
+                                    app:layout_constraintStart_toStartOf="@id/tvUserAddZipCodeTitle"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
                                 <com.google.android.material.textview.MaterialTextView
                                     android:id="@+id/tvUserAddZipCodeTitle"
                                     android:layout_width="wrap_content"
@@ -153,6 +164,17 @@
                                 android:background="@color/whit_88F4F4F4"
                                 app:layout_constraintTop_toBottomOf="@id/layoutSection2">
 
+                                <androidx.constraintlayout.widget.Group
+                                    android:id="@+id/groupUserEmail"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:visibility="visible"
+                                    app:constraint_referenced_ids="tvEmail,tvEmailTitle"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="@id/tvEmailTitle"
+                                    app:layout_constraintStart_toStartOf="@id/tvEmailTitle"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
                                 <com.google.android.material.textview.MaterialTextView
                                     android:id="@+id/tvEmailTitle"
                                     android:layout_width="wrap_content"
@@ -165,6 +187,17 @@
                                     app:layout_constraintEnd_toEndOf="@id/tvEmail"
                                     app:layout_constraintStart_toStartOf="@id/tvEmail"
                                     app:layout_constraintTop_toBottomOf="@id/tvEmail" />
+
+                                <androidx.constraintlayout.widget.Group
+                                    android:id="@+id/groupPhoneNumber"
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:visibility="visible"
+                                    app:constraint_referenced_ids="tvPhoneNumber,tvPhoneNumberTitle"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="@id/tvPhoneNumberTitle"
+                                    app:layout_constraintStart_toStartOf="@id/tvPhoneNumberTitle"
+                                    app:layout_constraintTop_toTopOf="parent" />
 
                                 <com.google.android.material.textview.MaterialTextView
                                     android:id="@+id/tvPhoneNumberTitle"
@@ -239,14 +272,15 @@
                     app:layout_constraintTop_toBottomOf="@id/cnLayoutProfile" />
 
                 <com.google.android.material.card.MaterialCardView
-                    android:layout_width="150dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_height="150dp"
-                    app:cardCornerRadius="10dp"
                     android:id="@+id/cvProfileImg"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="20dp"
+                    app:cardCornerRadius="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
+
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/imgProfile"
                         android:layout_width="match_parent"
@@ -255,18 +289,19 @@
                         android:src="@drawable/ic_launcher_background" />
                 </com.google.android.material.card.MaterialCardView>
 
+
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/imgCamera"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:elevation="1dp"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/ic_baseline_photo_camera_24"
                     android:contentDescription="@string/profile"
+                    android:elevation="20dp"
+                    android:src="@drawable/ic_baseline_photo_camera_24"
                     app:layout_constraintBottom_toBottomOf="@id/cvProfileImg"
-                    app:layout_constraintTop_toBottomOf="@id/cvProfileImg"
                     app:layout_constraintEnd_toEndOf="@id/cvProfileImg"
-                    app:layout_constraintStart_toStartOf="@id/cvProfileImg" />
+                    app:layout_constraintStart_toStartOf="@id/cvProfileImg"
+                    app:layout_constraintTop_toBottomOf="@id/cvProfileImg" />
 
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -301,17 +336,29 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/btnEditMessage" />
 
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imgIconSuspensionRisk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_help_outline_24"
+                    app:layout_constraintBottom_toBottomOf="@id/tvSuspensionRisk"
+                    app:layout_constraintEnd_toStartOf="@id/tvSuspensionRisk"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvSuspensionRisk" />
+
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tvSuspensionRisk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/roboto_medium"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="@{@string/suspension_risk + viewModel.loginDataLiveData.deactivationRiskPercentage+@string/percentage}"
+                    android:textColor="@color/gray_808080"
                     android:textSize="23sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imgIconSuspensionRisk"
                     app:layout_constraintTop_toBottomOf="@id/skbDeactivationRiskPercentage" />
 
                 <com.google.android.material.card.MaterialCardView
@@ -453,7 +500,7 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/roboto_bold"
                     android:text="@{viewModel.loginDataLiveData.token_type}"
-                    android:textColor="#EA6B6B"
+                    android:textColor="@color/red_EA6B6B"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toStartOf="@id/cvProfileImg"
                     app:layout_constraintStart_toStartOf="@id/cnLayoutProfile"
